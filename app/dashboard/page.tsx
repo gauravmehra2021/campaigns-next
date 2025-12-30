@@ -1,4 +1,6 @@
 import { getCampaignInsights, getCampaigns } from "../lib/query";
+import CampaignDetailsSection from "./CampaignDetailsSection";
+import CampaignStatusChart from "./CampaignStatusChart";
 
 export default async function DashboardPage() {
 
@@ -31,8 +33,9 @@ export default async function DashboardPage() {
       </div>
 
       {/* KPI cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {['Total Campaigns', 'Active Campaigns','Paused Campaigns','Completed Campaigns'].map((label, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+
+        {['Total Campaigns', 'Total Clicks','Total Conversions','Total Impressions',"Total spend"].map((label, i) => (
           <div
             key={label}
             className="rounded-xl bg-white border p-4 flex flex-col gap-1"
@@ -42,15 +45,31 @@ export default async function DashboardPage() {
             </span>
             <span className="text-lg font-semibold text-slate-900">
               {i === 0 && insights?.insights?.total_campaigns}
-              {i === 1 && insights?.insights?.active_campaigns}
-                {i === 2 && insights?.insights?.paused_campaigns}
-                   {i === 3 && insights?.insights?.completed_campaigns}
+              {i === 1 && insights?.insights?.total_clicks}
+                {i === 2 && insights?.insights?.total_conversions}
+                   {i === 3 && insights?.insights?.total_impressions}
+                     {i === 4 && `$${insights?.insights?.total_spend}`}
             </span>
             <span className="text-xs text-emerald-600">
               +12.4% vs last period
             </span>
           </div>
         ))}
+      </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <section className="lg:col-span-2 rounded-xl bg-white border p-4">
+          <h2 className="text-sm font-semibold text-slate-800 mb-5 ">
+          Campaign Status Overview
+          </h2>
+          <div className="h-52 flex items-center justify-center text-xs text-slate-400 rounded-lg mt-5">
+            <CampaignStatusChart campaigns={campaigns?.campaigns} />
+          </div>
+        </section>
+
+        <section className="rounded-xl bg-white border p-4">
+       <CampaignDetailsSection  campaigns={campaigns?.campaigns}/>
+        </section>
       </div>
 
     </div>
