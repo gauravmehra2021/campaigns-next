@@ -68,9 +68,16 @@ export default function DashboardLayout({
 
         <div className="flex items-center gap-3 text-xs md:text-sm text-slate-600">
           <span className="hidden sm:inline">Welcome, User</span>
-          <button className="px-3 py-1 rounded-md border text-xs hover:bg-slate-50">
-            Logout
-          </button>
+       <button
+  onClick={() => {
+    document.cookie = "auth_token=; path=/; max-age=0";
+    window.location.href = "/";
+  }}
+  className="px-3 py-1 rounded-md border text-xs hover:bg-slate-50"
+>
+  Logout
+</button>
+
         </div>
       </header>
 
