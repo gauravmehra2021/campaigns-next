@@ -74,9 +74,9 @@ export default async function DashboardPage() {
         </section>
       </div>
 
-      <div>
+      <section className="rounded-xl bg-white border p-4">
         <LiveCampaignInsights  campaigns={campaigns?.campaigns}/>
-      </div> 
+      </section> 
 
     </div>
   );

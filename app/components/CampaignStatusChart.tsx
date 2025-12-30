@@ -38,7 +38,7 @@ export default function CampaignStatusChart({
 
   return (
     <div className=" p-5 w-full mt-5">
-      <div className="h-64">
+      <div className="h-60">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} barSize={40}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
