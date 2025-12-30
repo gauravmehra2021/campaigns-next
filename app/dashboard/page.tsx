@@ -1,6 +1,8 @@
+import CampaignDetailsSection from "../components/CampaignDetailsSection";
+import CampaignStatusChart from "../components/CampaignStatusChart";
+import LiveCampaignInsights from "../components/LiveCampaignInsights";
 import { getCampaignInsights, getCampaigns } from "../lib/query";
-import CampaignDetailsSection from "./CampaignDetailsSection";
-import CampaignStatusChart from "./CampaignStatusChart";
+
 
 export default async function DashboardPage() {
 
@@ -71,6 +73,10 @@ export default async function DashboardPage() {
        <CampaignDetailsSection  campaigns={campaigns?.campaigns}/>
         </section>
       </div>
+
+      <div>
+        <LiveCampaignInsights  campaigns={campaigns?.campaigns}/>
+      </div> 
 
     </div>
   );

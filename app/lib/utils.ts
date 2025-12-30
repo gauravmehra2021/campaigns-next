@@ -9,5 +9,6 @@ export async function fetcher(endpoint: string) {
     throw new Error("API request failed");
   }
 
+  console.log("adasd",response)
   return response.json();
 }
